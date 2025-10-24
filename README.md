@@ -11,17 +11,24 @@ The primary objective was to derive actionable, risk-adjusted trading strategies
 # Technical Workflow Highlights 
 
 Data Cleaning & Merging: 
+
 Column names were standardized using str.strip().str.replace(' ', '_').str.lower().
+
 Datasets were merged using a Left Join on a normalized daily date key ($\text{timestamp.dt.normalize()}$) to align granular trades with the daily sentiment.
+
 Missing sentiment values were imputed using Forward Fill ($\text{ffill}$).
 
 Feature Engineering:
 Normalized PnL ($\frac{\text{Closed PnL}}{\text{Size USD}}$) was created as the key metric for risk-adjusted performance.
+
 Lagged Sentiment ($\text{value.shift(1 day)}$) was calculated to test for a 'hidden signal'.
+
 Risk Proxy: Due to the absence of the explicit leverage column, $\text{Size USD}$ was used as the professional proxy for trade exposure/risk magnitude.
 
 # Tools 
 
 Python (Pandas, NumPy, Seaborn, Matplotlib)
+
 Google Colab
+
 GitHub
